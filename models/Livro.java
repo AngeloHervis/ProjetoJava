@@ -7,6 +7,8 @@ public class Livro {
     private String autor;
     private int anoPublicacao;
     private int numExemplaresDisponiveis;
+    private int quantidadeDisponivel;
+    private String categoria;
 
     // Construtor
     public Livro(int codigo, String titulo, String autor, int anoPublicacao, int numExemplaresDisponiveis) {
@@ -56,6 +58,22 @@ public class Livro {
 
     public void setNumExemplaresDisponiveis(int numExemplaresDisponiveis) {
         this.numExemplaresDisponiveis = numExemplaresDisponiveis;
+    }
+
+    public int getQuantidadeDisponivel() {
+        return quantidadeDisponivel;
+    }
+
+    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
+        this.quantidadeDisponivel = quantidadeDisponivel;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     // Método para exibir informações do livro

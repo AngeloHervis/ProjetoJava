@@ -8,6 +8,7 @@ public class Emprestimo {
     private Usuario usuario;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucaoPrevista;
+    private LocalDate dataDevolucaoEfetiva;
 
     // Construtor
     public Emprestimo(Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataDevolucaoPrevista) {
@@ -48,6 +49,14 @@ public class Emprestimo {
 
     public void setDataDevolucaoPrevista(LocalDate dataDevolucaoPrevista) {
         this.dataDevolucaoPrevista = dataDevolucaoPrevista;
+    }
+
+    public void setDataDevolucaoEfetiva(LocalDate dataDevolucaoEfetiva) {
+        this.dataDevolucaoEfetiva = dataDevolucaoEfetiva;
+    }
+
+    public LocalDate getDataDevolucaoEfetiva() {
+        return dataDevolucaoEfetiva;
     }
 
     // Método para verificar se o empréstimo está atrasado
