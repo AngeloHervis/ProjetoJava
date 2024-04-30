@@ -27,16 +27,14 @@ public class Menu {
     // Método para ler a opção do usuário
     public static int lerOpcao() {
         Scanner scanner = new Scanner(System.in);
-        try {
+        System.out.print("Escolha uma opção: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
             System.out.print("Escolha uma opção: ");
-            while (!scanner.hasNextInt()) {
-                System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
-                System.out.print("Escolha uma opção: ");
-                scanner.next();
-            }
-            return scanner.nextInt();
-        } finally {
-            scanner.close();
+            scanner.next();
         }
+        int opcao = scanner.nextInt();
+        scanner.nextLine(); // Limpa o buffer do scanner
+        return opcao;
     }
 }
