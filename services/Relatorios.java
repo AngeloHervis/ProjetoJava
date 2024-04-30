@@ -42,17 +42,21 @@ public class Relatorios {
                 System.out.println("Livro: " + emprestimo.getLivro().getTitulo());
                 System.out.println("Data de Empréstimo: " + emprestimo.getDataEmprestimo());
                 System.out.println("Data de Devolução Prevista: " + emprestimo.getDataDevolucaoPrevista());
-                System.out.println("Status: " + (emprestimo.getDataDevolucaoEfetiva().isAfter(emprestimo.getDataDevolucaoPrevista()) ? "Em Atraso" : "Devolvido"));
+                System.out.println("Status: "
+                        + (emprestimo.getDataDevolucaoEfetiva().isAfter(emprestimo.getDataDevolucaoPrevista())
+                                ? "Em Atraso"
+                                : "Devolvido"));
                 System.out.println("-----------------------------------");
             }
         }
     }
 
-    // Método para gerar relatório de usuários por critério (exemplo: comprimento do nome)
+    // Método para gerar relatório de usuários por critério (exemplo: comprimento do
+    // nome)
     public void relatorioUsuariosPorCriterio(List<Usuario> usuarios) {
         System.out.println("Relatório de Usuários por Critério:");
         Map<Integer, List<Usuario>> usuariosPorCriterio = usuarios.stream()
-                                                            .collect(Collectors.groupingBy(usuario -> usuario.getNome().length()));
+                .collect(Collectors.groupingBy(usuario -> usuario.getNome().length()));
         usuariosPorCriterio.forEach((criterio, listaUsuarios) -> {
             System.out.println("Criterio: " + criterio);
             System.out.println("Quantidade de Usuários: " + listaUsuarios.size());
@@ -61,18 +65,16 @@ public class Relatorios {
     }
 
     public void relatorioLivrosMaisPopulares(List<Emprestimo> emprestimos) {
-    System.out.println("Relatório de Livros Mais Populares:");
-    Map<Livro, Long> contadorLivros = emprestimos.stream()
-                                    .collect(Collectors.groupingBy(Emprestimo::getLivro, Collectors.counting()));
-    contadorLivros.entrySet().stream()
-        .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
-        .limit(5)
-        .forEach(entry -> {
-            System.out.println("Livro: " + entry.getKey().getTitulo());
-            System.out.println("Quantidade de Empréstimos: " + entry.getValue());
-            System.out.println("-----------------------------------");
-        });
+        System.out.println("Relatório de Livros Mais Populares:");
+        Map<Livro, Long> contadorLivros = emprestimos.stream()
+                .collect(Collectors.groupingBy(Emprestimo::getLivro, Collectors.counting()));
+        contadorLivros.entrySet().stream()
+                .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
+                .limit(5)
+                .forEach(entry -> {
+                    System.out.println("Livro: " + entry.getKey().getTitulo());
+                    System.out.println("Quantidade de Empréstimos: " + entry.getValue());
+                    System.out.println("-----------------------------------");
+                });
     }
 }
-
-
