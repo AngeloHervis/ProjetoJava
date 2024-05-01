@@ -38,23 +38,23 @@ public class CadastroLivros {
     }
 
     // Método para criar um novo livro a partir do console
-public static Livro criarLivro(Scanner scanner) {
-    System.out.println("Cadastro de Livro");
-    System.out.print("Código: ");
-    int codigo = scanner.nextInt();
-    scanner.nextLine(); // Limpar o buffer do scanner
-    System.out.print("Título: ");
-    String titulo = scanner.nextLine();
-    System.out.print("Autor: ");
-    String autor = scanner.nextLine();
-    System.out.print("Ano de Publicação: ");
-    int anoPublicacao = scanner.nextInt();
-    scanner.nextLine(); // Limpar o buffer do scanner
-    System.out.print("Número de Exemplares Disponíveis: ");
-    int numExemplaresDisponiveis = scanner.nextInt();
-    scanner.nextLine(); // Limpar o buffer do scanner
+    public static Livro criarLivro(Scanner scanner) {
+        System.out.println("Cadastro de Livro");
+        System.out.print("Código: ");
+        int codigo = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer do scanner
+        System.out.print("Título: ");
+        String titulo = scanner.nextLine();
+        System.out.print("Autor: ");
+        String autor = scanner.nextLine();
+        System.out.print("Ano de Publicação: ");
+        int anoPublicacao = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer do scanner
+        System.out.print("Número de Exemplares Disponíveis: ");
+        int numExemplaresDisponiveis = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer do scanner
 
-    return new Livro(codigo, titulo, autor, anoPublicacao, numExemplaresDisponiveis);
-}
+        return new Livro(codigo, titulo, autor, anoPublicacao, numExemplaresDisponiveis);
+    }
 
 }

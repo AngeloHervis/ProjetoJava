@@ -9,14 +9,16 @@ import models.Usuario;
 public class CadastroUsuario {
     // Lista para armazenar os usuários cadastrados
     private List<Usuario> usuarios;
+    // Variável estática para armazenar o último ID atribuído
+    private static int ultimoId = 0;
 
     // Construtor
     public CadastroUsuario() {
         this.usuarios = new ArrayList<>();
     }
 
-     // Método para cadastrar um usuário
-    public static Usuario criarUsuario(Scanner scanner) {
+    // Método para cadastrar um usuário
+    public Usuario criarUsuario(Scanner scanner) {
         System.out.println("Informe os dados do usuário:");
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
@@ -26,11 +28,11 @@ public class CadastroUsuario {
         String endereco = scanner.nextLine();
         System.out.print("Email: ");
         String email = scanner.nextLine();
-        
-        // Geração de ID pode ser implementada aqui
-        int id = 1; // Exemplo simples, pode ser melhorado
-        
-        return new Usuario(id, nome, telefone, endereco, email);
+
+        // Incrementa o ID antes de atribuir ao novo usuário
+        ultimoId++;
+
+        return new Usuario(ultimoId, nome, telefone, endereco, email);
     }
 
     // Método para buscar um usuário por nome

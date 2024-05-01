@@ -13,6 +13,7 @@ public class Main {
         List<Emprestimo> emprestimos = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
+        CadastroUsuario cadastroUsuario = new CadastroUsuario(); // Instanciando objeto CadastroUsuario
 
         // Loop do Menu Principal
         boolean sair = false;
@@ -34,7 +35,8 @@ public class Main {
                     break;
                 case 3:
                     // Cadastro de Usuários
-                    Usuario usuario = CadastroUsuario.criarUsuario(scanner);
+                    Usuario usuario = cadastroUsuario.criarUsuario(scanner); // Chamando o método criarUsuario no objeto
+                                                                             // cadastroUsuario
                     if (usuario != null) {
                         usuarios.add(usuario);
                     }
