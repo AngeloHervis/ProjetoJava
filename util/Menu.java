@@ -3,7 +3,6 @@ package util;
 import java.util.Scanner;
 
 public class Menu {
-    // Método para exibir o menu principal
     public static void exibirMenuPrincipal() {
         System.out.println("=== Biblioteca - Menu Principal ===");
         System.out.println("1. Cadastro de Livros");
@@ -15,7 +14,6 @@ public class Menu {
         System.out.println("0. Sair");
     }
 
-    // Método para exibir o menu de relatórios
     public static void exibirMenuRelatorios() {
         System.out.println("=== Relatórios ===");
         System.out.println("1. Livros Emprestados");
@@ -24,7 +22,6 @@ public class Menu {
         System.out.println("0. Voltar ao Menu Principal");
     }
 
-    // Método para ler a opção do usuário
     public static int lerOpcao() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Escolha uma opção: ");
@@ -34,7 +31,7 @@ public class Menu {
             scanner.next();
         }
         int opcao = scanner.nextInt();
-        scanner.nextLine(); // Limpa o buffer do scanner
+        scanner.nextLine();
         return opcao;
     }
 }

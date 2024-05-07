@@ -3,14 +3,12 @@ package models;
 import java.time.LocalDate;
 
 public class Emprestimo {
-    // Propriedades
     private Livro livro;
     private Usuario usuario;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucaoPrevista;
     private LocalDate dataDevolucaoEfetiva;
 
-    // Construtor
     public Emprestimo(Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataDevolucaoPrevista) {
         this.livro = livro;
         this.usuario = usuario;
@@ -18,7 +16,6 @@ public class Emprestimo {
         this.dataDevolucaoPrevista = dataDevolucaoPrevista;
     }
 
-    // Getters e Setters
     public Livro getLivro() {
         return livro;
     }
@@ -59,7 +56,6 @@ public class Emprestimo {
         return dataDevolucaoEfetiva;
     }
 
-    // Método para verificar se o empréstimo está atrasado
     public boolean isAtrasado() {
         LocalDate dataAtual = LocalDate.now();
         return dataAtual.isAfter(dataDevolucaoPrevista);

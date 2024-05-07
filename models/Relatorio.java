@@ -3,7 +3,6 @@ package models;
 import java.util.List;
 
 public class Relatorio {
-    // Método para gerar relatório de livros emprestados
     public void gerarRelatorioLivrosEmprestados(List<Emprestimo> emprestimos) {
         System.out.println("Relatório de Livros Emprestados:");
         for (Emprestimo emprestimo : emprestimos) {
@@ -15,7 +14,6 @@ public class Relatorio {
         }
     }
 
-    // Método para gerar relatório de usuários com atrasos
     public void gerarRelatorioUsuariosComAtrasos(List<Emprestimo> emprestimos) {
         System.out.println("Relatório de Usuários com Atrasos:");
         for (Emprestimo emprestimo : emprestimos) {

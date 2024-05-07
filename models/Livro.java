@@ -1,7 +1,6 @@
 package models;
 
 public class Livro {
-    // Propriedades
     private int codigo;
     private String titulo;
     private String autor;
@@ -10,16 +9,15 @@ public class Livro {
     private int quantidadeDisponivel;
     private String categoria;
 
-    // Construtor
     public Livro(int codigo, String titulo, String autor, int anoPublicacao, int numExemplaresDisponiveis) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.autor = autor;
         this.anoPublicacao = anoPublicacao;
         this.numExemplaresDisponiveis = numExemplaresDisponiveis;
+        this.quantidadeDisponivel = numExemplaresDisponiveis;
     }
 
-    // Getters e Setters
     public int getCodigo() {
         return codigo;
     }
@@ -76,7 +74,6 @@ public class Livro {
         this.categoria = categoria;
     }
 
-    // Método para exibir informações do livro
     @Override
     public String toString() {
         return "codigo = " + codigo +

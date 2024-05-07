@@ -15,8 +15,6 @@ public class CadastroLivros {
     public void cadastrarLivro(Livro livro) {
         livros.add(livro);
         System.out.println("Livro cadastrado com sucesso!");
-        // Atualiza a quantidade disponível de exemplares
-        livro.setQuantidadeDisponivel(livro.getNumExemplaresDisponiveis());
     }
     
 
@@ -29,7 +27,6 @@ public class CadastroLivros {
         return null;
     }
 
-    // Método para buscar um livro por autor
     public List<Livro> buscarLivrosPorAutor(String autor) {
         List<Livro> livrosDoAutor = new ArrayList<>();
         for (Livro livro : livros) {
@@ -40,24 +37,22 @@ public class CadastroLivros {
         return livrosDoAutor;
     }
 
-    // Método para criar um novo livro a partir do console
     public static Livro criarLivro(Scanner scanner) {
         System.out.println("Cadastro de Livro");
         System.out.print("Código: ");
         int codigo = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer do scanner
+        scanner.nextLine(); 
         System.out.print("Título: ");
         String titulo = scanner.nextLine();
         System.out.print("Autor: ");
         String autor = scanner.nextLine();
         System.out.print("Ano de Publicação: ");
         int anoPublicacao = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer do scanner
+        scanner.nextLine();
         System.out.print("Número de Exemplares Disponíveis: ");
         int numExemplaresDisponiveis = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer do scanner
+        scanner.nextLine();
 
         return new Livro(codigo, titulo, autor, anoPublicacao, numExemplaresDisponiveis);
     }
-
 }

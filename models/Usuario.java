@@ -1,13 +1,11 @@
 package models;
 
 public class Usuario {
-    // Propriedades
     private String nome;
     private String telefone;
     private String endereco;
     private String email;
 
-    // Construtor
     public Usuario(String nome, String telefone, String endereco, String email) {
         this.nome = nome;
         this.telefone = telefone;
@@ -15,7 +13,6 @@ public class Usuario {
         this.email = email;
     }
 
-    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -48,7 +45,6 @@ public class Usuario {
         this.email = email;
     }
 
-    // Método para exibir informações do usuário
     @Override
     public String toString() {
         return "Usuario" +

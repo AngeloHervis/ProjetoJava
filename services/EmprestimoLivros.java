@@ -8,19 +8,16 @@ import models.Livro;
 import models.Usuario;
 
 public class EmprestimoLivros {
-    // Método para realizar o empréstimo de um livro interagindo com o usuário
+
     public static Emprestimo realizarEmprestimo(List<Livro> livros, List<Usuario> usuarios, List<Emprestimo> emprestimos, Scanner scanner) {
-        // Exibe a lista de livros disponíveis
         System.out.println("Livros Disponíveis:");
         for (Livro livro : livros) {
             System.out.println(livro.getTitulo());
         }
 
-        // Solicita ao usuário o título do livro a ser emprestado
         System.out.print("Digite o título do livro que deseja emprestar: ");
         String tituloLivro = scanner.nextLine();
 
-        // Busca o livro pelo título
         Livro livroSelecionado = null;
         for (Livro livro : livros) {
             if (livro.getTitulo().equalsIgnoreCase(tituloLivro)) {
@@ -29,23 +26,19 @@ public class EmprestimoLivros {
             }
         }
 
-        // Se o livro não for encontrado, exibe uma mensagem e retorna null
         if (livroSelecionado == null) {
             System.out.println("Livro não encontrado.");
             return null;
         }
 
-        // Verifica se há exemplares disponíveis do livro
         if (livroSelecionado.getQuantidadeDisponivel() <= 0) {
             System.out.println("Não há exemplares disponíveis deste livro. Empréstimo não realizado.");
             return null;
         }
 
-        // Solicita ao usuário o nome completo do usuário que está realizando o empréstimo
         System.out.print("Digite o nome completo do usuário que está realizando o empréstimo: ");
         String nomeUsuario = scanner.nextLine();
 
-        // Busca o usuário pelo nome
         Usuario usuarioSelecionado = null;
         for (Usuario usuario : usuarios) {
             if (usuario.getNome().equalsIgnoreCase(nomeUsuario)) {
@@ -54,33 +47,29 @@ public class EmprestimoLivros {
             }
         }
 
-        // Se o usuário não for encontrado, exibe uma mensagem e retorna null
         if (usuarioSelecionado == null) {
             System.out.println("Usuário não encontrado.");
             return null;
         }
 
-        // Realiza o empréstimo do livro e retorna o objeto Emprestimo
-        return emprestarLivro(livroSelecionado, usuarioSelecionado, emprestimos);
-    }
-
-    // Método para realizar o empréstimo de um livro
-    public static Emprestimo emprestarLivro(Livro livro, Usuario usuario, List<Emprestimo> emprestimos) {
-        // Verifica se o usuário já possui um livro emprestado
         for (Emprestimo emprestimo : emprestimos) {
-            if (emprestimo.getUsuario().equals(usuario)) {
+            if (emprestimo.getUsuario().equals(usuarioSelecionado)) {
                 System.out.println("Usuário já possui um livro emprestado. Empréstimo não realizado.");
                 return null;
             }
         }
 
-        // Cria um novo empréstimo
+        return emprestarLivro(livroSelecionado, usuarioSelecionado, emprestimos);
+    }
+
+    private static Emprestimo emprestarLivro(Livro livro, Usuario usuario, List<Emprestimo> emprestimos) {
+        if (livro.getQuantidadeDisponivel() <= 0) {
+            System.out.println("Não há exemplares disponíveis deste livro. Empréstimo não realizado.");
+            return null;
+        }
+
         Emprestimo novoEmprestimo = new Emprestimo(livro, usuario, LocalDate.now(), LocalDate.now().plusDays(7));
-
-        // Atualiza a quantidade de exemplares disponíveis do livro
-        livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() - 1);
-
-        // Adiciona o empréstimo à lista de empréstimos
+        livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() - 1); // Atualiza a quantidade disponível
         emprestimos.add(novoEmprestimo);
 
         System.out.println("Livro emprestado com sucesso!");

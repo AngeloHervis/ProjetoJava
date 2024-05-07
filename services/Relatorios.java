@@ -8,7 +8,6 @@ import models.Livro;
 import models.Usuario;
 
 public class Relatorios {
-    // Método para gerar relatório de livros emprestados
     public void relatorioLivrosEmprestados(List<Emprestimo> emprestimos) {
         System.out.println("Relatório de Livros Emprestados:");
         for (Emprestimo emprestimo : emprestimos) {
@@ -20,7 +19,6 @@ public class Relatorios {
         }
     }
 
-    // Método para gerar relatório de usuários com atrasos
     public void relatorioUsuariosComAtrasos(List<Emprestimo> emprestimos) {
         System.out.println("Relatório de Usuários com Atrasos:");
         for (Emprestimo emprestimo : emprestimos) {
@@ -34,7 +32,6 @@ public class Relatorios {
         }
     }
 
-    // Método para gerar relatório de histórico de empréstimos por usuário
     public void relatorioHistoricoEmprestimosPorUsuario(List<Emprestimo> emprestimos, Usuario usuario) {
         System.out.println("Relatório de Histórico de Empréstimos para o Usuário " + usuario.getNome() + ":");
         for (Emprestimo emprestimo : emprestimos) {
@@ -51,8 +48,6 @@ public class Relatorios {
         }
     }
 
-    // Método para gerar relatório de usuários por critério (exemplo: comprimento do
-    // nome)
     public void relatorioUsuariosPorCriterio(List<Usuario> usuarios) {
         System.out.println("Relatório de Usuários por Critério:");
         Map<Integer, List<Usuario>> usuariosPorCriterio = usuarios.stream()
