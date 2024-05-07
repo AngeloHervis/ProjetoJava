@@ -1,5 +1,6 @@
 package services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,17 +21,20 @@ public class Relatorios {
     }
 
     public void relatorioUsuariosComAtrasos(List<Emprestimo> emprestimos) {
-        System.out.println("Relatório de Usuários com Atrasos:");
-        for (Emprestimo emprestimo : emprestimos) {
-            if (emprestimo.getDataDevolucaoPrevista().isBefore(emprestimo.getDataDevolucaoEfetiva())) {
-                System.out.println("Usuário: " + emprestimo.getUsuario().getNome());
-                System.out.println("Livro: " + emprestimo.getLivro().getTitulo());
-                System.out.println("Data de Devolução Prevista: " + emprestimo.getDataDevolucaoPrevista());
-                System.out.println("Data de Devolução Efetiva: " + emprestimo.getDataDevolucaoEfetiva());
-                System.out.println("-----------------------------------");
-            }
+    System.out.println("Relatório de Usuários com Atrasos:");
+    for (Emprestimo emprestimo : emprestimos) {
+        LocalDate dataDevolucaoPrevista = emprestimo.getDataDevolucaoPrevista();
+        LocalDate dataDevolucaoEfetiva = emprestimo.getDataDevolucaoEfetiva();
+        if (dataDevolucaoPrevista != null && dataDevolucaoEfetiva != null && dataDevolucaoPrevista.isBefore(dataDevolucaoEfetiva)) {
+            System.out.println("Usuário: " + emprestimo.getUsuario().getNome());
+            System.out.println("Livro: " + emprestimo.getLivro().getTitulo());
+            System.out.println("Data de Devolução Prevista: " + dataDevolucaoPrevista);
+            System.out.println("Data de Devolução Efetiva: " + dataDevolucaoEfetiva);
+            System.out.println("-----------------------------------");
         }
     }
+}
+
 
     public void relatorioHistoricoEmprestimosPorUsuario(List<Emprestimo> emprestimos, Usuario usuario) {
         System.out.println("Relatório de Histórico de Empréstimos para o Usuário " + usuario.getNome() + ":");
