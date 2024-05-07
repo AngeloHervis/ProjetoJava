@@ -27,6 +27,4 @@ public class Relatorio {
             }
         }
     }
-
-    // Outros métodos de relatório podem ser adicionados conforme necessário
 }

@@ -2,15 +2,13 @@ package models;
 
 public class Usuario {
     // Propriedades
-    private int id;
     private String nome;
     private String telefone;
     private String endereco;
     private String email;
 
     // Construtor
-    public Usuario(int id, String nome, String telefone, String endereco, String email) {
-        this.id = id;
+    public Usuario(String nome, String telefone, String endereco, String email) {
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
@@ -18,14 +16,6 @@ public class Usuario {
     }
 
     // Getters e Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -61,12 +51,10 @@ public class Usuario {
     // Método para exibir informações do usuário
     @Override
     public String toString() {
-        return "Usuario{" +
-                "id=" + id +
+        return "Usuario" +
                 ", nome='" + nome + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", endereco='" + endereco + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+                ", email='" + email + '\'';
     }
 }

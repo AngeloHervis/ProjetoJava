@@ -15,7 +15,10 @@ public class CadastroLivros {
     public void cadastrarLivro(Livro livro) {
         livros.add(livro);
         System.out.println("Livro cadastrado com sucesso!");
+        // Atualiza a quantidade disponível de exemplares
+        livro.setQuantidadeDisponivel(livro.getNumExemplaresDisponiveis());
     }
+    
 
     public Livro buscarLivroPorTitulo(String titulo) {
         for (Livro livro : livros) {

@@ -9,8 +9,6 @@ import models.Usuario;
 public class CadastroUsuario {
     // Lista para armazenar os usuários cadastrados
     private List<Usuario> usuarios;
-    // Variável estática para armazenar o último ID atribuído
-    private static int ultimoId = 0;
 
     // Construtor
     public CadastroUsuario() {
@@ -29,10 +27,7 @@ public class CadastroUsuario {
         System.out.print("Email: ");
         String email = scanner.nextLine();
 
-        // Incrementa o ID antes de atribuir ao novo usuário
-        ultimoId++;
-
-        return new Usuario(ultimoId, nome, telefone, endereco, email);
+        return new Usuario(nome, telefone, endereco, email);
     }
 
     // Método para buscar um usuário por nome

@@ -79,12 +79,10 @@ public class Livro {
     // Método para exibir informações do livro
     @Override
     public String toString() {
-        return "Livro{" +
-                "codigo=" + codigo +
-                ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", anoPublicacao=" + anoPublicacao +
-                ", numExemplaresDisponiveis=" + numExemplaresDisponiveis +
-                '}';
+        return "codigo = " + codigo +
+                "\n titulo = '" + titulo + '\'' +
+                "\n autor = '" + autor + '\'' +
+                "\n anoPublicacao = " + anoPublicacao +
+                "\n numExemplaresDisponiveis = " + numExemplaresDisponiveis;
     }
 }

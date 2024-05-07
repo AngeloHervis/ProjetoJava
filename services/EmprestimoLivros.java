@@ -8,38 +8,8 @@ import models.Livro;
 import models.Usuario;
 
 public class EmprestimoLivros {
-    // Método para realizar o empréstimo de um livro
-    public static Emprestimo emprestarLivro(Livro livro, Usuario usuario, List<Emprestimo> emprestimos) {
-        // Verifica se o usuário já possui um livro emprestado
-        for (Emprestimo emprestimo : emprestimos) {
-            if (emprestimo.getUsuario().equals(usuario)) {
-                System.out.println("Usuário já possui um livro emprestado. Empréstimo não realizado.");
-                return null;
-            }
-        }
-
-        // Verifica se há exemplares disponíveis do livro
-        if (livro.getQuantidadeDisponivel() <= 0) {
-            System.out.println("Não há exemplares disponíveis deste livro. Empréstimo não realizado.");
-            return null;
-        }
-
-        // Cria um novo empréstimo
-        Emprestimo novoEmprestimo = new Emprestimo(livro, usuario, LocalDate.now(), LocalDate.now().plusDays(7));
-
-        // Atualiza a quantidade de exemplares disponíveis do livro
-        livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() - 1);
-
-        // Adiciona o empréstimo à lista de empréstimos
-        emprestimos.add(novoEmprestimo);
-
-        System.out.println("Livro emprestado com sucesso!");
-        return novoEmprestimo;
-    }
-
     // Método para realizar o empréstimo de um livro interagindo com o usuário
-    public static Emprestimo realizarEmprestimo(List<Livro> livros, List<Usuario> usuarios,
-            List<Emprestimo> emprestimos, Scanner scanner) {
+    public static Emprestimo realizarEmprestimo(List<Livro> livros, List<Usuario> usuarios, List<Emprestimo> emprestimos, Scanner scanner) {
         // Exibe a lista de livros disponíveis
         System.out.println("Livros Disponíveis:");
         for (Livro livro : livros) {
@@ -65,15 +35,20 @@ public class EmprestimoLivros {
             return null;
         }
 
-        // Solicita ao usuário o ID do usuário que está realizando o empréstimo
-        System.out.print("Digite o ID do usuário que está realizando o empréstimo: ");
-        int idUsuario = scanner.nextInt();
-        scanner.nextLine(); // Limpa o buffer do scanner
+        // Verifica se há exemplares disponíveis do livro
+        if (livroSelecionado.getQuantidadeDisponivel() <= 0) {
+            System.out.println("Não há exemplares disponíveis deste livro. Empréstimo não realizado.");
+            return null;
+        }
 
-        // Busca o usuário pelo ID
+        // Solicita ao usuário o nome completo do usuário que está realizando o empréstimo
+        System.out.print("Digite o nome completo do usuário que está realizando o empréstimo: ");
+        String nomeUsuario = scanner.nextLine();
+
+        // Busca o usuário pelo nome
         Usuario usuarioSelecionado = null;
         for (Usuario usuario : usuarios) {
-            if (usuario.getId() == idUsuario) {
+            if (usuario.getNome().equalsIgnoreCase(nomeUsuario)) {
                 usuarioSelecionado = usuario;
                 break;
             }
@@ -86,7 +61,29 @@ public class EmprestimoLivros {
         }
 
         // Realiza o empréstimo do livro e retorna o objeto Emprestimo
-        // Ajuste na chamada do método emprestarLivro
         return emprestarLivro(livroSelecionado, usuarioSelecionado, emprestimos);
+    }
+
+    // Método para realizar o empréstimo de um livro
+    public static Emprestimo emprestarLivro(Livro livro, Usuario usuario, List<Emprestimo> emprestimos) {
+        // Verifica se o usuário já possui um livro emprestado
+        for (Emprestimo emprestimo : emprestimos) {
+            if (emprestimo.getUsuario().equals(usuario)) {
+                System.out.println("Usuário já possui um livro emprestado. Empréstimo não realizado.");
+                return null;
+            }
+        }
+
+        // Cria um novo empréstimo
+        Emprestimo novoEmprestimo = new Emprestimo(livro, usuario, LocalDate.now(), LocalDate.now().plusDays(7));
+
+        // Atualiza a quantidade de exemplares disponíveis do livro
+        livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() - 1);
+
+        // Adiciona o empréstimo à lista de empréstimos
+        emprestimos.add(novoEmprestimo);
+
+        System.out.println("Livro emprestado com sucesso!");
+        return novoEmprestimo;
     }
 }
